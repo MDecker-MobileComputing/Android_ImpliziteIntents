@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,8 +22,18 @@ import android.widget.Toast;
 public class MainActivity extends Activity
                           implements View.OnClickListener {
 
-    /** Button um Browser zu öffnen. */
+    /** Tag-String für Log-Nachrichten. */
+    public static final String TAG4LOGGING = "ImpliziteIntents";
+
+    /** Button um Web-Browser zur Anzeige einer bestimmten URL zu öffnen. */
     protected Button _browserButton = null;
+
+    /** Button um externe App zur Anzeige einer Geo-Koordinate zu öffnen. */
+    protected Button _geoKoordinateButton = null;
+
+    /** Button um bestimmten Eintrag im App-Store-Client anzuzeigen. */
+    protected Button _appStoreButton = null;
+
 
     /**
      * Lifecycle-Methode.
@@ -37,6 +48,12 @@ public class MainActivity extends Activity
 
         _browserButton = findViewById(R.id.browserButton);
         _browserButton.setOnClickListener(this);
+
+        _geoKoordinateButton = findViewById(R.id.geoKoordinateButton);
+        _geoKoordinateButton.setOnClickListener(this);
+
+        _appStoreButton = findViewById(R.id.appStoreButton);
+        _appStoreButton.setOnClickListener(this);
     }
 
 
@@ -57,9 +74,32 @@ public class MainActivity extends Activity
 
         if (view == _browserButton) {
 
+            Uri httpUri = Uri.parse("https://www.heise.de");
+
             intent = new Intent(Intent.ACTION_VIEW);
-            Uri uri = Uri.parse("https://www.heise.de");
-            intent.setData(uri);
+            intent.setData(httpUri);
+
+            // Verwendung anderer Konstruktor von Klasse Intent:
+            // new Intent(Intent.ACTION_VIEW, uri);
+
+        } else if (view == _geoKoordinateButton) {
+
+            // Dezimal-Koordinaten für Schloss KA als URI;
+            // "Südlich" oder "Westlich" können mit negativen Vorzeichen definiert werden)
+            Uri geoUri = Uri.parse("geo:49.014,8.4043");
+
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(geoUri);
+
+        } else if (view == _appStoreButton) {
+
+            // Paket-Bezeichner für App "Spiegel-Online (SPON)", siehe Wert für Parameter "id" von
+            // URL in Google Play: https://play.google.com/store/apps/details?id=de.spiegel.android.app.spon
+            // Möglichkeiten mit "market://": http://developer.android.com/distribute/tools/promote/linking.html
+            Uri appStoreUri = Uri.parse("market://details?id=de.spiegel.android.app.spon");
+
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(appStoreUri);
 
         } else {
 
@@ -68,10 +108,14 @@ public class MainActivity extends Activity
         }
 
 
+        // Der implizite Intent darf nur dann abgeschickt werden, wenn es auf dem
+        // Android-Gerät mindestens eine App gibt, die den Intent unterstützt;
+        // ist dies nicht der Fall und das Intent-Objekt wird trotzdem abgeschickt,
+        // dann stürzt die App ab.
         if ( wirdIntentUnterstuetzt(intent) )
             startActivity(intent);
         else
-            view.setEnabled(false);
+            view.setEnabled(false); // Button deaktivieren
     }
 
 
@@ -79,12 +123,12 @@ public class MainActivity extends Activity
      * Die Methode überprüft, ob es für den als Parameter übergebenen Intent eine
      * passende Zielkomponente auf dem Android-Gerät gibt.
      * Wenn es keine Komponente gibt, dann wird eine Fehlermeldung
-     * als Toast ausgegeben.
-     * <br/><br/>
+     * als Toast ausgegeben.<br/><br/>
+     *
      * Wenn diese Methode für einen Intent <tt>false</tt> liefert,
      * der Intent aber trotzdem mit <i>startActivity(intent)</i>
-     * abgesetzt wird, dann crasht die App.
-     * <br/><br/>
+     * abgesetzt wird, dann crasht die App.<br/><br/>
+     *
      * Die Verwendung der Methode {@link Intent#resolveActivity(PackageManager)}
      * wird auch auf
      * <a href="https://developer.android.com/guide/components/intents-common.html">dieser Seite</a>
@@ -106,7 +150,10 @@ public class MainActivity extends Activity
         ComponentName componentName = intent.resolveActivity(packageManager);
 
         if (componentName == null) {
-            showToast("Keine Komponente gefunden für: " + intent);
+            showToast("Dieser Intent wird auf Ihrem Gerät nicht unterstützt.");
+            Log.w(TAG4LOGGING ,
+                  "Nicht-unterstützter Intent: ACTION=" + intent.getAction() +
+                  ", DATA=" + intent.getDataString() );
             return false;
         } else
             return true;

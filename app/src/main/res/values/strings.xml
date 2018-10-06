@@ -4,4 +4,8 @@
 
     <string name="button_label_externer_browser">Externen Browser öffnen</string>
 
+    <string name="button_label_map_oeffnen">Anzeige geografische Koordinate</string>
+
+    <string name="button_label_appstore">App in App-Store anzeigen</string>
+
 </resources>
