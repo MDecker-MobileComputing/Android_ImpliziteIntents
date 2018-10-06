@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">Implizite Intents</string>
+
+    <string name="button_label_externer_browser">Externen Browser öffnen</string>
+
+</resources>
