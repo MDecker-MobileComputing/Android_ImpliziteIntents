@@ -1,9 +1,8 @@
 package de.mide.impliziteintents;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -179,12 +178,11 @@ public class MainActivity extends Activity
      *
      * @return Impliziter Intent zur Anzeige der geographischen
      *         Koordinate <i>49°1'Nord, 8°24'Ost</i>. Diese Koordinate
-     *         ist rechts oben auf der Seite über Karlsruhe in
-     *         der deutschsprachigen Wikipedia zu finden; wenn
-     *         man dort auf diese Koordinate klickt, dann wird
-     *         man zu der Seite "GeoHack - Karlsruhe"
-     *         weitergeleitet, wo man die zugehörige
-     *         Dezimalkoordinatendarstellung findet.
+     *         ist rechts oben auf der Seite über Karlsruhe in der
+     *         deutschsprachigen Wikipedia zu finden; wenn man
+     *         dort auf diese Koordinate klickt, dann wird man
+     *         zu der Seite "GeoHack - Karlsruhe" weitergeleitet,
+     *         wo man die zugehörige Dezimalkoordinatendarstellung findet.
      */
     protected Intent createIntentGeoKoordinate() {
 
@@ -203,8 +201,14 @@ public class MainActivity extends Activity
      * Liefert impliziten Intent für die Anzeige einer
      * bestimmten App im App-Store-Client zurück,
      * nämlich <a href="http://bit.ly/2OFvBIB">Spiegel Online</a>.
-     * Dieser Intent kann ggf. auch von einem alternativen
-     * App-Store-Client empfangen werden.
+     * Die in dieser URL enthaltene URL-Parameter "id" wird
+     * auch für die URI benötigt.
+     * <br><br>
+     *
+     * Der von dieser Methode erzeugte Intent kann u.U.
+     * auch von den Client-Apps alternativer App-Stores
+     * (z.B. F-Droid) verarbeitet werden, auch wenn diese
+     * die App nicht finden.
      *
      * @return Impliziter Intent zur Anzeige der App
      *         von "Spiegel Online".
@@ -221,10 +225,10 @@ public class MainActivity extends Activity
 
 
     /**
-     * Liefert impliziten Intent für das Erstellen einer
-     * e-Mail zurück. Es kann sein, dass sich neben
-     * eMail-Apps auch noch Instant-Messaging-Apps
-     * für diesen Intent zuständig fühlen.
+     * Liefert impliziten Intent für das Erstellen einer e-Mail zurück.
+     * Es kann sein, dass sich neben eMail-Apps (z.B. GMail-App)
+     * auch noch Instant-Messaging-Apps für diesen Intent zuständig
+     * fühlen.
      *
      * @return Impliziter Intent zum Verfassen einer e-Mail,
      *         Betreff-Zeile und ein Inhalts-Satz sind schon
@@ -246,10 +250,8 @@ public class MainActivity extends Activity
 
 
     /**
-     * Liefert impliziten Intent für das Anwählen einer
-     * bestimmten Telefon-Nummer zurück. Auf Android-Tablets
-     * ohne Mobilfunk-Modul wird dieser Intent nicht
-     * unterstützt werden. Dieser Telefon-Anruf kann auch
+     * Liefert impliziten Intent für das Anwählen einer bestimmten
+     * Telefon-Nummer zurück. Dieser Telefon-Anruf kann auch
      * vom im Android-SDK enthaltenen Emulator simuliert
      * werden.
      *

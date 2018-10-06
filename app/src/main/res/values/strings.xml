@@ -2,6 +2,9 @@
 
     <string name="app_name">Implizite Intents</string>
 
+
+    <!-- Strings für MainActivity -->
+
     <string name="button_label_externer_browser">Externen Browser öffnen</string>
 
     <string name="button_label_map_oeffnen">Anzeige geografische Koordinate</string>
@@ -10,7 +13,7 @@
 
     <string name="button_label_email">E-Mail verschicken</string>
 
-    <string name="button_label_telefon">Telefon-Nr anrufen</string>
+    <string name="button_label_telefon">Telefon-Nummer anrufen</string>
 
     <string name="button_label_foto">Foto aufnehmen</string>
 

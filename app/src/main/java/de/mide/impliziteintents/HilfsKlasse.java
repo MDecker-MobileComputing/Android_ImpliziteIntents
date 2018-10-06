@@ -9,25 +9,35 @@ import android.widget.Toast;
 
 
 /**
- * Diese Klasse beinhaltet Hilfsmethoden, die von beiden Activity-Klassen
+ * Diese Klasse beinhaltet statische Hilfsmethoden, die von beiden Activity-Klassen
  * verwendet werden.
+ * <br><br>
+ *
+ * Für das Argument vom Typ {@link Context}, das beide Methoden erwarten, kann
+ * bei Aufruf aus einer Activity-Instanz heraus die Selbstreferenz <i>this</i>
+ * übergeben werden (die Klasse {@link android.app.Activity} erbt indirekt
+ * von der Klasse {@link android.content.Context}).
  * <br><br>
  *
  * This project is licensed under the terms of the BSD 3-Clause License.
  */
 public class HilfsKlasse {
 
-    /** Tag-String für Log-Nachrichten. */
+    /**
+     * Tag-String für Log-Nachrichten; kann zum Filtern von Log-Nachrichten
+     * in LogCat-View von Android Studio verwendet werden.
+     */
     public static final String TAG4LOGGING = "ImpliziteIntents";
 
 
     /**
-     * Convenience-Methode, um Nachricht <i>nachricht</i> mit
-     * einem Toast-Objekt darzustellen.
+     * Convenience-Methode, um Nachricht <i>nachricht</i> mit einem Toast-Objekt
+     * darzustellen. Ein Toast-Objekt blockiert nicht die App verschwindet nach
+     * einigen Sekunden von selbst wieder.
      *
-     * @param context Referenz auf aufrufende Activity
+     * @param context Referenz auf aufrufende Activity.
      *
-     * @param nachricht Auszugebende Nachricht
+     * @param nachricht Anzuzeigende Nachricht.
      */
     protected static void zeigeToast(Context context, String nachricht) {
         Toast.makeText(context, nachricht, Toast.LENGTH_LONG).show();
@@ -51,7 +61,7 @@ public class HilfsKlasse {
      * verarbeiten/empfangen können, dann wird die mit der höchsten Priorität
      * zurückgeliefert.
      *
-     * @param context Referenz auf aufrufende Activity
+     * @param context Referenz auf aufrufende Activity.
      *
      * @param intent Intent-Objekt (impliziter Intent), für das überprüft werden soll,
      *               ob auf dem aktuellen Android-Gerät es mindestens eine App gibt,

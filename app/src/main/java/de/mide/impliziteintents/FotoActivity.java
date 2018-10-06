@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 
-
 /**
  * Activity zur Aufnahme eines Fotos über die Kamera-App;
  * demonstriert Callback-Methode für implizite Intents.
