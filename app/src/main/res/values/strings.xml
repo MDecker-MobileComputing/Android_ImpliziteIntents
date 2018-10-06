@@ -10,4 +10,15 @@
 
     <string name="button_label_email">E-Mail verschicken</string>
 
+    <string name="button_label_telefon">Telefon-Nr anrufen</string>
+
+    <string name="button_label_foto">Foto aufnehmen</string>
+
+
+    <!-- Strings für FotoActivity -->
+
+    <string name="button_label_zurueck">Zurück</string>
+
+    <string name="button_label_foto_auslösen">Foto aufnehmen</string>
+
 </resources>

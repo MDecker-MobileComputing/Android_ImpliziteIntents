@@ -35,4 +35,18 @@
         android:layout_margin="10dp"
         android:text="@string/button_label_email" />
 
+    <Button
+        android:id="@+id/telefonButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/button_label_telefon" />
+
+    <Button
+        android:id="@+id/fotoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/button_label_foto" />
+
 </LinearLayout>
