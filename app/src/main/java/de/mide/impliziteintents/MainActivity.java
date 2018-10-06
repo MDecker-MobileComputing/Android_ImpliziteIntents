@@ -14,10 +14,17 @@ import android.widget.Button;
 /**
  * App demonstriert Verwendung von sog. <i>impliziten Intents</i>, mit
  * denen externe Apps geöffnet werden können.
- * Statt über die Angabe einer Ziel-Klasse wie bei expliziten Intents
+ * Statt über die Angabe einer Ziel-Klasse wie bei expliziten Intents,
  * muss bei einem impliziten Intent zumindest eine sog. Action
  * angegeben werden, meist auch noch bestimmte Daten (z.B.
  * eine URL/URI, wenn "Anzeigen" als Action gewählt wurde).
+ * <br><br>
+ *
+ * Für jede vorgestellte Intent-Art (die eine bestimmte andere
+ * externe App öffnet) gibt es eine eigene Methode, die das
+ * entsprechende Intent-Objekt zurückgibt, z.B.
+ * {@link MainActivity#createIntentBrowserOeffnen()} oder
+ * {@link MainActivity#createIntentGeoKoordinate()}.
  * <br><br>
  *
  * This project is licensed under the terms of the BSD 3-Clause License.
@@ -94,50 +101,23 @@ public class MainActivity extends Activity
 
         if (view == _browserButton) {
 
-            Uri httpUri = Uri.parse("https://www.heise.de");
-
-            intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(httpUri);
-
-            // Verwendung anderer Konstruktor von Klasse Intent:
-            // new Intent(Intent.ACTION_VIEW, uri);
+            intent = createIntentBrowserOeffnen();
 
         } else if (view == _geoKoordinateButton) {
 
-            // Dezimal-Koordinaten für Schloss KA als URI;
-            // "Südlich" oder "Westlich" können mit negativen Vorzeichen definiert werden)
-            Uri geoUri = Uri.parse("geo:49.014,8.4043");
-
-            intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(geoUri);
+            intent = createIntentGeoKoordinate();
 
         } else if (view == _appStoreButton) {
 
-            // Paket-Bezeichner für App "Spiegel-Online (SPON)", siehe Wert für Parameter "id" von
-            // URL in Google Play: https://play.google.com/store/apps/details?id=de.spiegel.android.app.spon
-            // Möglichkeiten mit "market://": http://developer.android.com/distribute/tools/promote/linking.html
-            Uri appStoreUri = Uri.parse("market://details?id=de.spiegel.android.app.spon");
-
-            intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(appStoreUri);
+            intent = createAppStoreIntent();
 
         } else if (view == _emailButton) {
 
-            Uri emailUri = Uri.parse("mailto:");
-
-            intent = new Intent(Intent.ACTION_SEND);
-            intent.setData(emailUri);
-
-            intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Betreff-Zeile");
-            intent.putExtra(Intent.EXTRA_TEXT, "Hier steht die eigentliche Nachricht drin.");
+            intent = createEmailIntent();
 
         } else if ( view == _telefonButton) {
 
-            Uri telefonUri = Uri.parse("tel:0123456789");
-
-            intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(telefonUri);
+            intent = createTelefonAnrufIntent();
 
         } else if ( view == _fotoButton) {
 
@@ -170,5 +150,120 @@ public class MainActivity extends Activity
         }
     }
 
+
+    /**
+     * Liefert impliziten Intent für Anzeige einer bestimmte Webseite
+     * in einer Browser-App zurück.
+     *
+     * @return Impliziter Intent zum Öffnen einer bestimmten URL
+     *         in einer externen Browser-App.
+     */
+    protected Intent createIntentBrowserOeffnen() {
+
+        Uri httpUri = Uri.parse("https://www.heise.de");
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(httpUri);
+
+        // Alternative: new Intent(Intent.ACTION_VIEW, httpUri);
+
+        return intent;
+    }
+
+
+    /**
+     * Liefert impliziten Intent für die Anzeige einer bestimmten
+     * geographischen Koordinate (nämlich vom Karlsruher Schloss)
+     * zurück; dieser Intent kann z.B. von der App "Google Maps"
+     * verarbeitet werden.
+     *
+     * @return Impliziter Intent zur Anzeige der geographischen
+     *         Koordinate <i>49°1'Nord, 8°24'Ost</i>. Diese Koordinate
+     *         ist rechts oben auf der Seite über Karlsruhe in
+     *         der deutschsprachigen Wikipedia zu finden; wenn
+     *         man dort auf diese Koordinate klickt, dann wird
+     *         man zu der Seite "GeoHack - Karlsruhe"
+     *         weitergeleitet, wo man die zugehörige
+     *         Dezimalkoordinatendarstellung findet.
+     */
+    protected Intent createIntentGeoKoordinate() {
+
+        // Dezimal-Koordinaten für Schloss KA als URI;
+        // "Südlich" oder "Westlich" können mit negativen Vorzeichen definiert werden)
+        Uri geoUri = Uri.parse("geo:49.014,8.4043");
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(geoUri);
+
+        return intent;
+    }
+
+
+    /**
+     * Liefert impliziten Intent für die Anzeige einer
+     * bestimmten App im App-Store-Client zurück,
+     * nämlich <a href="http://bit.ly/2OFvBIB">Spiegel Online</a>.
+     * Dieser Intent kann ggf. auch von einem alternativen
+     * App-Store-Client empfangen werden.
+     *
+     * @return Impliziter Intent zur Anzeige der App
+     *         von "Spiegel Online".
+     */
+    protected Intent createAppStoreIntent() {
+
+        Uri appStoreUri = Uri.parse("market://details?id=de.spiegel.android.app.spon");
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(appStoreUri);
+
+        return intent;
+    }
+
+
+    /**
+     * Liefert impliziten Intent für das Erstellen einer
+     * e-Mail zurück. Es kann sein, dass sich neben
+     * eMail-Apps auch noch Instant-Messaging-Apps
+     * für diesen Intent zuständig fühlen.
+     *
+     * @return Impliziter Intent zum Verfassen einer e-Mail,
+     *         Betreff-Zeile und ein Inhalts-Satz sind schon
+     *         vorgegeben.
+     */
+    protected Intent createEmailIntent() {
+
+        Uri emailUri = Uri.parse("mailto:");
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(emailUri);
+
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Betreff-Zeile");
+        intent.putExtra(Intent.EXTRA_TEXT   , "Hier steht die eigentliche Nachricht drin.");
+
+        return intent;
+    }
+
+
+    /**
+     * Liefert impliziten Intent für das Anwählen einer
+     * bestimmten Telefon-Nummer zurück. Auf Android-Tablets
+     * ohne Mobilfunk-Modul wird dieser Intent nicht
+     * unterstützt werden. Dieser Telefon-Anruf kann auch
+     * vom im Android-SDK enthaltenen Emulator simuliert
+     * werden.
+     *
+     * @return Impliziter Intent zum Anwählen der Telefonnummer
+     *         <i>0123456789</i>.
+     */
+    protected Intent createTelefonAnrufIntent() {
+
+        Uri telefonUri = Uri.parse("tel:0123456789");
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(telefonUri);
+
+        return intent;
+    }
 
 }
