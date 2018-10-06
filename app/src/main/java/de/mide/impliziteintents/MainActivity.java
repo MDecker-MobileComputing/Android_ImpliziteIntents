@@ -15,6 +15,10 @@ import android.widget.Toast;
 /**
  * App demonstriert Verwendung von sog. <i>impliziten Intents</i>, mit
  * denen externe Apps geöffnet werden können.
+ * Statt über die Angabe einer Ziel-Klasse wie bei expliziten Intents
+ * muss bei einem impliziten Intent zumindest eine sog. Action
+ * angegeben werden, meist auch noch bestimmte Daten (z.B.
+ * eine URL/URI, wenn "Anzeigen" als Action gewählt wurde).
  * <br><br>
  *
  * This project is licensed under the terms of the BSD 3-Clause License.
@@ -33,6 +37,9 @@ public class MainActivity extends Activity
 
     /** Button um bestimmten Eintrag im App-Store-Client anzuzeigen. */
     protected Button _appStoreButton = null;
+
+    /** Buttom um e-Mail-App zu öffnen. */
+    protected Button _emailButton = null;
 
 
     /**
@@ -54,6 +61,9 @@ public class MainActivity extends Activity
 
         _appStoreButton = findViewById(R.id.appStoreButton);
         _appStoreButton.setOnClickListener(this);
+
+        _emailButton = findViewById(R.id.emailButton);
+        _emailButton.setOnClickListener(this);
     }
 
 
@@ -101,10 +111,24 @@ public class MainActivity extends Activity
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(appStoreUri);
 
+        } else if (view == _emailButton) {
+
+            Uri emailUri = Uri.parse("mailto:");
+
+            intent = new Intent(Intent.ACTION_SEND);
+            intent.setData(emailUri);
+
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Betreff-Zeile" );
+            intent.putExtra(Intent.EXTRA_TEXT   , "Hier steht die eigentliche Nachricht drin." );
+
         } else {
 
-            showToast("INTERNER Fehler: Event-Handler von unerwartetem View-Objekt aufgerufen: " + view);
-            return;
+            showToast("INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst.");
+            Log.e(TAG4LOGGING,
+                  "Event-Handler für Buttons von unerwartetem View-Objekt ausgelöst: " + view);
+
+            return; // Abbruch
         }
 
 
@@ -112,10 +136,13 @@ public class MainActivity extends Activity
         // Android-Gerät mindestens eine App gibt, die den Intent unterstützt;
         // ist dies nicht der Fall und das Intent-Objekt wird trotzdem abgeschickt,
         // dann stürzt die App ab.
-        if ( wirdIntentUnterstuetzt(intent) )
+        if ( wirdIntentUnterstuetzt(intent) ) {
             startActivity(intent);
-        else
+        }
+        else {
+            showToast("Dieser Intent wird auf Ihrem Gerät leider nicht unterstützt.");
             view.setEnabled(false); // Button deaktivieren
+        }
     }
 
 
@@ -150,13 +177,15 @@ public class MainActivity extends Activity
         ComponentName componentName = intent.resolveActivity(packageManager);
 
         if (componentName == null) {
-            showToast("Dieser Intent wird auf Ihrem Gerät nicht unterstützt.");
+
             Log.w(TAG4LOGGING ,
                   "Nicht-unterstützter Intent: ACTION=" + intent.getAction() +
                   ", DATA=" + intent.getDataString() );
+
             return false;
-        } else
+        } else {
             return true;
+        }
     }
 
 

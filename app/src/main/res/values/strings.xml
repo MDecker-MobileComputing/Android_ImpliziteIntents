@@ -8,4 +8,6 @@
 
     <string name="button_label_appstore">App in App-Store anzeigen</string>
 
+    <string name="button_label_email">E-Mail verschicken</string>
+
 </resources>
