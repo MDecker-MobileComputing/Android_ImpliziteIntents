@@ -124,9 +124,8 @@ public class FotoActivity extends Activity
      *
      * @param intent Wenn Kamera-App ohne Angabe eines Zieldateinamens für die
      *               Foto-Datei aufgerufen wird, dann enthält dieses Intent-Objekt
-     *               ein Extra-Objekt unter dem Schlüssel "data", in dem das
-     *               aufgenommene Foto (verkleinert) als Objekt der Klasse
-     *               {@link Bitmap} enthalten ist.
+     *               unter dem Schlüssel "data" ein Extra-Objekt vom Typ {@link Bitmap},
+     *               in dem das aufgenommene Foto (verkleinert) enthalten ist.
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -141,8 +140,7 @@ public class FotoActivity extends Activity
             return;
         }
 
-
-        Bitmap fotoBitmap = (Bitmap) intent.getParcelableExtra("data");
+        Bitmap fotoBitmap = intent.getParcelableExtra("data");
         Log.i(HilfsKlasse.TAG4LOGGING,
               "Bitmap erhalten: " + fotoBitmap.getWidth() + "x" + fotoBitmap.getHeight() );
 
