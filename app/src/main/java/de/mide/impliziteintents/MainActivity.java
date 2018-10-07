@@ -108,15 +108,15 @@ public class MainActivity extends Activity
 
         } else if (view == _appStoreButton) {
 
-            intent = createAppStoreIntent();
+            intent = createIntentAppstoreEintrag();
 
         } else if (view == _emailButton) {
 
-            intent = createEmailIntent();
+            intent = createIntentEMailVerfassen();
 
         } else if ( view == _telefonButton) {
 
-            intent = createTelefonAnrufIntent();
+            intent = createIntentTelefonanruf();
 
         } else if ( view == _fotoButton) {
 
@@ -140,9 +140,11 @@ public class MainActivity extends Activity
         // ist dies nicht der Fall und das Intent-Objekt wird trotzdem abgeschickt,
         // dann stürzt die App ab.
         if ( HilfsKlasse.wirdIntentUnterstuetzt(this, intent) ) {
+
             startActivity(intent);
         }
         else {
+
             HilfsKlasse.zeigeToast(this,
                     "Dieser Intent wird auf Ihrem Gerät leider nicht unterstützt.");
             view.setEnabled(false); // Button deaktivieren
@@ -173,8 +175,8 @@ public class MainActivity extends Activity
     /**
      * Liefert impliziten Intent für die Anzeige einer bestimmten
      * geographischen Koordinate (nämlich vom Karlsruher Schloss)
-     * zurück; dieser Intent kann z.B. von der App "Google Maps"
-     * verarbeitet werden.
+     * zurück; dieser Intent kann z.B. von den Apps "Google Maps"
+     * oder "Maps.me" verarbeitet werden.
      *
      * @return Impliziter Intent zur Anzeige der geographischen
      *         Koordinate <i>49°1'Nord, 8°24'Ost</i>. Diese Koordinate
@@ -187,7 +189,7 @@ public class MainActivity extends Activity
     protected Intent createIntentGeoKoordinate() {
 
         // Dezimal-Koordinaten für Schloss KA als URI;
-        // "Südlich" oder "Westlich" können mit negativen Vorzeichen definiert werden)
+        // "Südlich" oder "Westlich" können mit negativen Vorzeichen definiert werden.
         Uri geoUri = Uri.parse("geo:49.014,8.4043");
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -213,7 +215,7 @@ public class MainActivity extends Activity
      * @return Impliziter Intent zur Anzeige der App
      *         von "Spiegel Online".
      */
-    protected Intent createAppStoreIntent() {
+    protected Intent createIntentAppstoreEintrag() {
 
         Uri appStoreUri = Uri.parse("market://details?id=de.spiegel.android.app.spon");
 
@@ -234,16 +236,17 @@ public class MainActivity extends Activity
      *         Betreff-Zeile und ein Inhalts-Satz sind schon
      *         vorgegeben.
      */
-    protected Intent createEmailIntent() {
+    protected Intent createIntentEMailVerfassen() {
 
         Uri emailUri = Uri.parse("mailto:");
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setData(emailUri);
 
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Betreff-Zeile");
-        intent.putExtra(Intent.EXTRA_TEXT   , "Hier steht die eigentliche Nachricht drin.");
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL   , new String[]{"info@eine-firma.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT , "Betreff-Zeile");
+        intent.putExtra(Intent.EXTRA_TEXT    , "Hier steht die eigentliche Nachricht drin.");
 
         return intent;
     }
@@ -258,7 +261,7 @@ public class MainActivity extends Activity
      * @return Impliziter Intent zum Anwählen der Telefonnummer
      *         <i>0123456789</i>.
      */
-    protected Intent createTelefonAnrufIntent() {
+    protected Intent createIntentTelefonanruf() {
 
         Uri telefonUri = Uri.parse("tel:0123456789");
 
