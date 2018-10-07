@@ -83,7 +83,9 @@ public class HilfsKlasse {
                   ", DATA=" + intent.getDataString() );
 
             return false;
+
         } else {
+
             return true;
         }
     }

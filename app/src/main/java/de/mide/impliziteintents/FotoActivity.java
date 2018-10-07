@@ -109,8 +109,6 @@ public class FotoActivity extends Activity
     }
 
 
-
-
     /**
      * Callback-Methode für Intent: Kamera-App ist beendet worden.
      *
