@@ -4,7 +4,9 @@ Android app shows how to invoke external apps using <i>implicit intents</i>.
 
 <br>
 
-For an example on <i>explicit intents</i> see [this app project](https://github.com/MDecker-MobileComputing/Android_ZweiActivities).
+**Related projects:**
+* [Explicit Intents](https://github.com/MDecker-MobileComputing/Android_ZweiActivities)
+* [Custom Implicit Intent](https://github.com/MDecker-MobileComputing/Android_ImpliziteIntents)
 
 <br>
 
