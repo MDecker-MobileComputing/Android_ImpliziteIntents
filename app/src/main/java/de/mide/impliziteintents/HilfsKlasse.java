@@ -40,6 +40,7 @@ public class HilfsKlasse {
      * @param nachricht Anzuzeigende Nachricht.
      */
     protected static void zeigeToast(Context context, String nachricht) {
+
         Toast.makeText(context, nachricht, Toast.LENGTH_LONG).show();
     }
 
