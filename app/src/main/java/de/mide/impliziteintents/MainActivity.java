@@ -47,14 +47,16 @@ public class MainActivity extends Activity
     /** Button um eine Telefonnummer anzuwählen. */
     protected Button _telefonButton = null;
 
-    /** Button um ein Foto aufzunehmen; es wird eine andere Activity aufgerufen
-     *  und nicht direkt ein impliziter Intent abgesetzt. */
+    /**
+     * Button um ein Foto aufzunehmen; es wird eine andere Activity aufgerufen
+     * und nicht direkt ein impliziter Intent abgesetzt.
+     */
     protected Button _fotoButton = null;
 
 
     /**
-     * Lifecycle-Methode.
-     * Lädt Layout-Datei und weist den Buttons die Activity-Instanz selbst
+     * Lifecycle-Methode;
+     * lädt Layout-Datei und weist den Buttons die Activity-Instanz selbst
      * als Event-Handler-Objekt zu. Es werden auch die Member-Variablen
      * für die UI-Elemente befüllt.
      */
@@ -92,7 +94,7 @@ public class MainActivity extends Activity
      * implizite Intent auf dem Android-Gerät nicht verarbeitet werden
      * kann, dann wird der Button deaktiviert.
      *
-     * @param view Button, der das Event ausgelöst hat.
+     * @param view  Button, der das Event ausgelöst hat.
      */
     @Override
     public void onClick(View view) {
