@@ -74,8 +74,7 @@ public class HilfsKlasse {
     public static boolean wirdIntentUnterstuetzt(Context context, Intent intent) {
 
         PackageManager packageManager = context.getPackageManager();
-
-        ComponentName componentName = intent.resolveActivity(packageManager);
+        ComponentName componentName   = intent.resolveActivity(packageManager);
 
         if (componentName == null) {
 

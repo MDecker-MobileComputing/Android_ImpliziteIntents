@@ -99,6 +99,7 @@ public class FotoActivity extends Activity
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         if ( HilfsKlasse.wirdIntentUnterstuetzt(this, intent) == false) {
+
             HilfsKlasse.zeigeToast(this, "Auf diesem Gerät können keine Foto aufgenommen werden.");
             _fotoAusloesenButton.setEnabled(false);
             return;
@@ -130,11 +131,13 @@ public class FotoActivity extends Activity
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
 
         if (resultCode != RESULT_OK) {
+
             HilfsKlasse.zeigeToast(this, "Kein Foto aufgenommen");
             return;
         }
 
         if (intent.hasExtra("data") == false) {
+
             HilfsKlasse.zeigeToast(this, "Kein Bitmap-Objekt von Kamera-App erhalten.");
             return;
         }
