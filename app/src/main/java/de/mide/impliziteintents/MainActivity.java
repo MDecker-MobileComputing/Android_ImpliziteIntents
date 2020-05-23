@@ -31,7 +31,6 @@ import android.widget.Button;
 public class MainActivity extends Activity
                           implements View.OnClickListener {
 
-
     /** Button um Web-Browser zur Anzeige einer bestimmten URL zu öffnen. */
     protected Button _browserButton = null;
 
