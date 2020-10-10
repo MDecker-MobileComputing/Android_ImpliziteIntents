@@ -260,8 +260,7 @@ public class MainActivity extends Activity
      * vom im Android-SDK enthaltenen Emulator simuliert
      * werden.
      *
-     * @return Impliziter Intent zum Anwählen der Telefonnummer
-     *         <i>0123456789</i>.
+     * @return Impliziter Intent zum Anwählen der Telefonnummer <i>0123456789</i>.
      */
     protected Intent createIntentTelefonanruf() {
 
