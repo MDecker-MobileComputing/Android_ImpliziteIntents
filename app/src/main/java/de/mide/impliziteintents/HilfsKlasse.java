@@ -60,7 +60,11 @@ public class HilfsKlasse {
      * <a href="https://developer.android.com/guide/components/intents-common.html">dieser Seite</a>
      * im API-Guide beschrieben. Wenn es mehrere Apps gibt, die den Intent
      * verarbeiten/empfangen können, dann wird die mit der höchsten Priorität
-     * zurückgeliefert.
+     * zurückgeliefert.<br/><br/>
+     *
+     * Ab API-Level 30 müssen die abzufragenden Intents in der Manifest-Datei im
+     * Element {@code queries} definiert werden, siehe auch
+     * https://stackoverflow.com/a/64204646
      *
      * @param context Referenz auf aufrufende Activity.
      *
