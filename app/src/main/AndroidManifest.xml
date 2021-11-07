@@ -24,4 +24,16 @@
 
     </application>
 
+
+    <!--
+         Lösung nach https://stackoverflow.com/a/64204646 ,
+         wird ab API-Level 30 für Methode wirdIntentUnterstuetzt() benötigt
+     -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+    </queries>
+
 </manifest>
