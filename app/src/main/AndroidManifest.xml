@@ -30,6 +30,7 @@
          wird ab API-Level 30 für Methode wirdIntentUnterstuetzt() benötigt
      -->
     <queries>
+
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="http" />
@@ -45,9 +46,10 @@
             <data android:scheme="market" />
         </intent>
 
+        <!-- Lösung nach https://stackoverflow.com/a/69376417 -->
         <intent>
             <action android:name="android.intent.action.SEND" />
-            <data android:scheme="mailto" />
+            <data android:mimeType="text/plain" />
         </intent>
 
         <intent>

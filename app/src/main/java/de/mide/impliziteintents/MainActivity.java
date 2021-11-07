@@ -245,7 +245,7 @@ public class MainActivity extends Activity
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setData(emailUri);
 
-        intent.setType("message/rfc822");
+        intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_EMAIL   , new String[]{"info@eine-firma.com"});
         intent.putExtra(Intent.EXTRA_SUBJECT , "Betreff-Zeile");
         intent.putExtra(Intent.EXTRA_TEXT    , "Hier steht die eigentliche Nachricht drin.");
