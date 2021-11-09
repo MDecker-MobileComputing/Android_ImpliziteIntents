@@ -132,7 +132,7 @@ public class FotoActivity extends Activity
 
         if (resultCode != RESULT_OK) {
 
-            HilfsKlasse.zeigeToast(this, "Kein Foto aufgenommen");
+            HilfsKlasse.zeigeToast(this, "Kein Foto aufgenommen.");
             return;
         }
 
