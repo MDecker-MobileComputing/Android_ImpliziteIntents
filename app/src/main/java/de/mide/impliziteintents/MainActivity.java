@@ -29,7 +29,7 @@ import android.widget.Button;
  * This project is licensed under the terms of the BSD 3-Clause License.
  */
 public class MainActivity extends Activity
-                          implements View.OnClickListener {
+        implements View.OnClickListener {
 
     /** Button um Web-Browser zur Anzeige einer bestimmten URL zu öffnen. */
     protected Button _browserButton = null;
@@ -131,7 +131,7 @@ public class MainActivity extends Activity
             HilfsKlasse.zeigeToast(this,
                     "INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst.");
             Log.e(HilfsKlasse.TAG4LOGGING,
-                  "Unerwartetes View-Objekt in Event-Handler für Buttons: " + view );
+                    "Unerwartetes View-Objekt in Event-Handler für Buttons: " + view );
 
             return; // Abbruch
         }

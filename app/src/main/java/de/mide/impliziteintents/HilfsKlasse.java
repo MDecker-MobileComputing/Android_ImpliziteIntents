@@ -83,8 +83,8 @@ public class HilfsKlasse {
         if (componentName == null) {
 
             Log.w(TAG4LOGGING,
-                  "Nicht-unterstützter Intent: ACTION=" + intent.getAction() +
-                  ", DATA=" + intent.getDataString() );
+                    "Nicht-unterstützter Intent: ACTION=" + intent.getAction() +
+                            ", DATA=" + intent.getDataString() );
 
             return false;
 

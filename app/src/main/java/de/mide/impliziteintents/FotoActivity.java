@@ -19,7 +19,7 @@ import android.widget.ImageView;
  * This project is licensed under the terms of the BSD 3-Clause License.
  */
 public class FotoActivity extends Activity
-                          implements View.OnClickListener  {
+        implements View.OnClickListener  {
 
     /** Button für impliziten Intent zum Aufruf Kamera-App. */
     protected Button _fotoAusloesenButton = null;
@@ -72,10 +72,10 @@ public class FotoActivity extends Activity
         } else {
 
             Log.e(HilfsKlasse.TAG4LOGGING,
-                  "Unerwartetes View-Objekt in Event-Handler für Buttons: " + view );
+                    "Unerwartetes View-Objekt in Event-Handler für Buttons: " + view );
 
             HilfsKlasse.zeigeToast(this,
-                                   "INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst.");
+                    "INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst.");
         }
     }
 
@@ -144,7 +144,7 @@ public class FotoActivity extends Activity
 
         Bitmap fotoBitmap = intent.getParcelableExtra("data");
         Log.i(HilfsKlasse.TAG4LOGGING,
-              "Bitmap erhalten: " + fotoBitmap.getWidth() + "x" + fotoBitmap.getHeight() );
+                "Bitmap erhalten: " + fotoBitmap.getWidth() + "x" + fotoBitmap.getHeight() );
 
         _fotoImageView.setImageBitmap(fotoBitmap);
     }
