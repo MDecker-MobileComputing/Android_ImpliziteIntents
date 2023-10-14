@@ -1,4 +1,7 @@
-# Android-App "Implizite Intents"
+# Android-App "Implizite Intents" #
+
+
+<br>
 
 Android app shows how to invoke external apps using <i>implicit intents</i>.
 
@@ -15,7 +18,10 @@ Identifiers (names for classes, variables and methods), UI texts and Comments (J
 <br>
 
 ----
-## Screenshots
+
+## Screenshots ##
+
+<br>
 
 ![Screenshot 1: MainActivity](screenshot_1.png)  ![Screenshot 2: MainActivity](screenshot_2.png)
 
@@ -24,6 +30,11 @@ Identifiers (names for classes, variables and methods), UI texts and Comments (J
 <br>
 
 ----
-# License
+
+## License ##
+
+<br>
 
 See the [LICENSE file](LICENSE.md) for license rights and limitations (BSD 3-Clause License).
+
+<br>

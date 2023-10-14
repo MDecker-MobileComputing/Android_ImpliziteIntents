@@ -19,7 +19,7 @@ import android.widget.ImageView;
  * This project is licensed under the terms of the BSD 3-Clause License.
  */
 public class FotoActivity extends Activity
-        implements View.OnClickListener  {
+                          implements View.OnClickListener  {
 
     /** Button für impliziten Intent zum Aufruf Kamera-App. */
     protected Button _fotoAusloesenButton = null;

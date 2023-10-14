@@ -29,7 +29,7 @@ import android.widget.Button;
  * This project is licensed under the terms of the BSD 3-Clause License.
  */
 public class MainActivity extends Activity
-        implements View.OnClickListener {
+                          implements View.OnClickListener {
 
     /** Button um Web-Browser zur Anzeige einer bestimmten URL zu öffnen. */
     protected Button _browserButton = null;
