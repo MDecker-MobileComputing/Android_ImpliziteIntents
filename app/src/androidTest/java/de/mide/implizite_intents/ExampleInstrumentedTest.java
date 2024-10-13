@@ -1,4 +1,4 @@
-package de.mide.impliziteintents;
+package de.mide.implizite_intents;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("de.mide.impliziteintents", appContext.getPackageName());
+        assertEquals("de.mide.implizite_intents", appContext.getPackageName());
     }
 }

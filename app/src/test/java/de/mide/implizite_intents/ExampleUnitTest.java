@@ -1,4 +1,4 @@
-package de.mide.impliziteintents;
+package de.mide.implizite_intents;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package de.mide.impliziteintents;
+package de.mide.implizite_intents;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -29,7 +29,7 @@ import android.widget.Button;
  * This project is licensed under the terms of the BSD 3-Clause License.
  */
 public class MainActivity extends Activity
-                          implements View.OnClickListener {
+        implements View.OnClickListener {
 
     /** Button um Web-Browser zur Anzeige einer bestimmten URL zu öffnen. */
     protected Button _browserButton = null;
@@ -128,9 +128,9 @@ public class MainActivity extends Activity
 
         } else {
 
-            HilfsKlasse.zeigeToast(this,
+            Helferlein.zeigeToast(this,
                     "INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst.");
-            Log.e(HilfsKlasse.TAG4LOGGING,
+            Log.e(Helferlein.TAG4LOGGING,
                     "Unerwartetes View-Objekt in Event-Handler für Buttons: " + view );
 
             return; // Abbruch
@@ -141,13 +141,13 @@ public class MainActivity extends Activity
         // Android-Gerät mindestens eine App gibt, die den Intent unterstützt;
         // ist dies nicht der Fall und das Intent-Objekt wird trotzdem abgeschickt,
         // dann stürzt die App ab.
-        if ( HilfsKlasse.wirdIntentUnterstuetzt(this, intent) ) {
+        if ( Helferlein.wirdIntentUnterstuetzt(this, intent) ) {
 
             startActivity(intent);
         }
         else {
 
-            HilfsKlasse.zeigeToast(this,
+            Helferlein.zeigeToast(this,
                     "Dieser Intent wird auf Ihrem Gerät leider nicht unterstützt.");
             view.setEnabled(false); // Button deaktivieren
         }

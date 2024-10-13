@@ -1,19 +1,15 @@
 # Android-App "Implizite Intents" #
 
+<br>
+
+Dieses Repository enthält den Quellcode für eine native Android-App mit Java, die die Verwendung 
+von *impliziten Intents* demonstriert.  
 
 <br>
 
-Android app shows how to invoke external apps using <i>implicit intents</i>.
-
-<br>
-
-**Related projects:**
+**Verwandte Projekte:**
 * [Explicit Intents](https://github.com/MDecker-MobileComputing/Android_ZweiActivities)
 * [Custom Implicit Intent](https://github.com/MDecker-MobileComputing/Android_ImpliziteIntents)
-
-<br>
-
-Identifiers (names for classes, variables and methods), UI texts and Comments (JavaDoc) are in German only.
 
 <br>
 
