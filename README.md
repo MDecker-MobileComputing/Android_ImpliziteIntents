@@ -19,7 +19,7 @@ von *impliziten Intents* demonstriert.
 
 <br>
 
-![Screenshot 1: MainActivity](screenshot_1.png)  ![Screenshot 2: MainActivity](screenshot_2.png)
+![Screenshot 1: MainActivity](screenshot_1.png) &nbsp; ![Screenshot 2: MainActivity](screenshot_2.png)
 
 ![Screenshot 3: Secondary activity for taking pictures](screenshot_3.png)
 
