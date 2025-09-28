@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:installLocation="auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -12,8 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ImpliziteIntents"
-        tools:targetApi="31">
+        android:theme="@style/Theme.ImpliziteIntents">
 
         <activity
             android:name=".MainActivity"
@@ -33,9 +31,9 @@
     </application>
 
     <!--
-         Lösung nach https://stackoverflow.com/a/64204646 ,
-         wird ab API-Level 30 für Methode wirdIntentUnterstuetzt() benötigt
-     -->
+     Lösung nach https://stackoverflow.com/a/64204646 ,
+     wird ab API-Level 30 für Methode wirdIntentUnterstuetzt() benötigt
+    -->
     <queries>
 
         <intent>
@@ -69,6 +67,5 @@
         </intent>
 
     </queries>
-
 
 </manifest>

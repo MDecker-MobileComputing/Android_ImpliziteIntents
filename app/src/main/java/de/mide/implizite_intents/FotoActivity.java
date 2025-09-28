@@ -39,18 +39,18 @@ public class FotoActivity extends Activity
      * gefüllt.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState ) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_foto);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_foto );
 
-        _fotoAusloesenButton = findViewById(R.id.fotoAusloeserButton);
-        _fotoAusloesenButton.setOnClickListener(this);
+        _fotoAusloesenButton = findViewById( R.id.fotoAusloeserButton );
+        _fotoAusloesenButton.setOnClickListener( this );
 
-        _zurueckButton = findViewById(R.id.zurueckButton);
-        _zurueckButton.setOnClickListener(this);
+        _zurueckButton = findViewById( R.id.zurueckButton );
+        _zurueckButton.setOnClickListener( this );
 
-        _fotoImageView = findViewById(R.id.fotoImageView);
+        _fotoImageView = findViewById( R.id.fotoImageView );
     }
 
 
@@ -60,23 +60,23 @@ public class FotoActivity extends Activity
      * @param view Button, der das Event ausgelöst hat.
      */
     @Override
-    public void onClick(View view) {
+    public void onClick( View view ) {
 
-        if (view == _fotoAusloesenButton) {
+        if ( view == _fotoAusloesenButton ) {
 
             kameraAufrufen();
 
-        } else if (view == _zurueckButton) {
+        } else if ( view == _zurueckButton ) {
 
             finish();
 
         } else {
 
-            Log.e(Helferlein.TAG4LOGGING,
+            Log.e( Helferlein.TAG4LOGGING,
                     "Unerwartetes View-Objekt in Event-Handler für Buttons: " + view );
 
             Helferlein.zeigeToast(this,
-                    "INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst.");
+                    "INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst." );
         }
     }
 
@@ -97,18 +97,19 @@ public class FotoActivity extends Activity
      */
     protected void kameraAufrufen() {
 
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent intent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
 
-        if ( Helferlein.wirdIntentUnterstuetzt(this, intent) == false) {
+        if ( Helferlein.wirdIntentUnterstuetzt(this, intent ) == false ) {
 
-            Helferlein.zeigeToast(this, "Auf diesem Gerät können keine Foto aufgenommen werden.");
-            _fotoAusloesenButton.setEnabled(false);
+            Helferlein.zeigeToast(this,
+                    "Auf diesem Gerät können keine Foto aufgenommen werden." );
+            _fotoAusloesenButton.setEnabled( false );
             return;
         }
 
-        startActivityForResult(intent, 4242); // 4242=RequestCode
+        startActivityForResult( intent, 4242 ); // 4242=RequestCode
 
-        Log.i(Helferlein.TAG4LOGGING, "Intent an Kamera abgeschickt.");
+        Log.i( Helferlein.TAG4LOGGING, "Intent an Kamera abgeschickt." );
     }
 
 
@@ -129,25 +130,25 @@ public class FotoActivity extends Activity
      *               in dem das aufgenommene Foto (verkleinert) enthalten ist.
      */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    protected void onActivityResult( int requestCode, int resultCode, Intent intent ) {
 
-        if (resultCode != RESULT_OK) {
+        if ( resultCode != RESULT_OK ) {
 
-            Helferlein.zeigeToast(this, "Kein Foto aufgenommen.");
+            Helferlein.zeigeToast(this, "Kein Foto aufgenommen." );
             return;
         }
 
-        if (intent.hasExtra("data") == false) {
+        if ( intent.hasExtra("data") == false ) {
 
-            Helferlein.zeigeToast(this, "Kein Bitmap-Objekt von Kamera-App erhalten.");
+            Helferlein.zeigeToast( this, "Kein Bitmap-Objekt von Kamera-App erhalten." );
             return;
         }
 
-        Bitmap fotoBitmap = intent.getParcelableExtra("data");
-        Log.i(Helferlein.TAG4LOGGING,
+        Bitmap fotoBitmap = intent.getParcelableExtra( "data" );
+        Log.i( Helferlein.TAG4LOGGING,
                 "Bitmap erhalten: " + fotoBitmap.getWidth() + "x" + fotoBitmap.getHeight() );
 
-        _fotoImageView.setImageBitmap(fotoBitmap);
+        _fotoImageView.setImageBitmap( fotoBitmap );
     }
 
 }

@@ -39,9 +39,9 @@ public class Helferlein {
      *
      * @param nachricht Anzuzeigende Nachricht.
      */
-    protected static void zeigeToast(Context context, String nachricht) {
+    protected static void zeigeToast( Context context, String nachricht ) {
 
-        Toast.makeText(context, nachricht, Toast.LENGTH_LONG).show();
+        Toast.makeText( context, nachricht, Toast.LENGTH_LONG ).show();
     }
 
 
@@ -75,14 +75,14 @@ public class Helferlein {
      * @return <tt>true</tt>, wenn es mindestens einen Receiver für
      *         den <i>intent</i> gibt.
      */
-    public static boolean wirdIntentUnterstuetzt(Context context, Intent intent) {
+    public static boolean wirdIntentUnterstuetzt( Context context, Intent intent ) {
 
         PackageManager packageManager = context.getPackageManager();
-        ComponentName componentName   = intent.resolveActivity(packageManager);
+        ComponentName componentName   = intent.resolveActivity( packageManager );
 
-        if (componentName == null) {
+        if ( componentName == null ) {
 
-            Log.w(TAG4LOGGING,
+            Log.w( TAG4LOGGING,
                     "Nicht-unterstützter Intent: ACTION=" + intent.getAction() +
                             ", DATA=" + intent.getDataString() );
 
