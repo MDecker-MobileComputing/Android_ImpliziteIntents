@@ -148,7 +148,7 @@ public class MainActivity extends Activity
         else {
 
             Helferlein.zeigeToast(this,
-                    "Dieser Intent wird auf Ihrem Gerät leider nicht unterstützt.");
+                    "Dieser Intent wird auf Ihrem Gerät leider nicht unterstützt." );
             view.setEnabled(false); // Button deaktivieren
         }
     }
@@ -163,10 +163,10 @@ public class MainActivity extends Activity
      */
     protected Intent createIntentBrowserOeffnen() {
 
-        Uri httpUri = Uri.parse("https://www.heise.de");
+        Uri httpUri = Uri.parse("https://www.heise.de" );
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(httpUri);
+        Intent intent = new Intent( Intent.ACTION_VIEW );
+        intent.setData( httpUri );
 
         // Alternative: new Intent(Intent.ACTION_VIEW, httpUri);
 
@@ -192,10 +192,10 @@ public class MainActivity extends Activity
 
         // Dezimal-Koordinaten für Schloss KA als URI;
         // "Südlich" oder "Westlich" können mit negativen Vorzeichen definiert werden.
-        Uri geoUri = Uri.parse("geo:49.014,8.4043");
+        Uri geoUri = Uri.parse("geo:49.014,8.4043" );
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(geoUri);
+        Intent intent = new Intent( Intent.ACTION_VIEW );
+        intent.setData( geoUri );
 
         return intent;
     }
@@ -219,10 +219,10 @@ public class MainActivity extends Activity
      */
     protected Intent createIntentAppstoreEintrag() {
 
-        Uri appStoreUri = Uri.parse("market://details?id=de.spiegel.android.app.spon");
+        Uri appStoreUri = Uri.parse("market://details?id=de.spiegel.android.app.spon" );
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(appStoreUri);
+        Intent intent = new Intent( Intent.ACTION_VIEW );
+        intent.setData( appStoreUri );
 
         return intent;
     }
@@ -240,15 +240,15 @@ public class MainActivity extends Activity
      */
     protected Intent createIntentEMailVerfassen() {
 
-        Uri emailUri = Uri.parse("mailto:");
+        Uri emailUri = Uri.parse("mailto:" );
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(emailUri);
+        Intent intent = new Intent (Intent.ACTION_SEND );
+        intent.setData( emailUri );
 
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_EMAIL   , new String[]{"info@eine-firma.com"});
-        intent.putExtra(Intent.EXTRA_SUBJECT , "Betreff-Zeile");
-        intent.putExtra(Intent.EXTRA_TEXT    , "Hier steht die eigentliche Nachricht drin.");
+        intent.setType( "text/plain" );
+        intent.putExtra( Intent.EXTRA_EMAIL   , new String[]{ "info@eine-firma.com" });
+        intent.putExtra( Intent.EXTRA_SUBJECT , "Betreff-Zeile" );
+        intent.putExtra( Intent.EXTRA_TEXT    , "Hier steht die eigentliche Nachricht drin." );
 
         return intent;
     }
@@ -264,10 +264,10 @@ public class MainActivity extends Activity
      */
     protected Intent createIntentTelefonanruf() {
 
-        Uri telefonUri = Uri.parse("tel:0123456789");
+        Uri telefonUri = Uri.parse("tel:0123456789" );
 
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(telefonUri);
+        Intent intent = new Intent( Intent.ACTION_DIAL );
+        intent.setData( telefonUri );
 
         return intent;
     }
