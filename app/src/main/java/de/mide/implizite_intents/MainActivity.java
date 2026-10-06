@@ -29,7 +29,7 @@ import android.widget.Button;
  * This project is licensed under the terms of the BSD 3-Clause License.
  */
 public class MainActivity extends Activity
-        implements View.OnClickListener {
+                          implements View.OnClickListener {
 
     /** Button um Web-Browser zur Anzeige einer bestimmten URL zu öffnen. */
     protected Button _browserButton = null;
@@ -60,28 +60,28 @@ public class MainActivity extends Activity
      * für die UI-Elemente befüllt.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState ) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main );
 
-        _browserButton = findViewById(R.id.browserButton);
-        _browserButton.setOnClickListener(this);
+        _browserButton = findViewById( R.id.browserButton );
+        _browserButton.setOnClickListener( this );
 
-        _geoKoordinateButton = findViewById(R.id.geoKoordinateButton);
-        _geoKoordinateButton.setOnClickListener(this);
+        _geoKoordinateButton = findViewById( R.id.geoKoordinateButton );
+        _geoKoordinateButton.setOnClickListener( this );
 
-        _appStoreButton = findViewById(R.id.appStoreButton);
-        _appStoreButton.setOnClickListener(this);
+        _appStoreButton = findViewById( R.id.appStoreButton );
+        _appStoreButton.setOnClickListener( this );
 
-        _emailButton = findViewById(R.id.emailButton);
-        _emailButton.setOnClickListener(this);
+        _emailButton = findViewById( R.id.emailButton );
+        _emailButton.setOnClickListener( this );
 
-        _telefonButton = findViewById(R.id.telefonButton);
-        _telefonButton.setOnClickListener(this);
+        _telefonButton = findViewById( R.id.telefonButton );
+        _telefonButton.setOnClickListener( this );
 
-        _fotoButton = findViewById(R.id.fotoButton);
-        _fotoButton.setOnClickListener(this);
+        _fotoButton = findViewById( R.id.fotoButton );
+        _fotoButton.setOnClickListener( this );
     }
 
 
@@ -96,41 +96,41 @@ public class MainActivity extends Activity
      * @param view  Button, der das Event ausgelöst hat.
      */
     @Override
-    public void onClick(View view) {
+    public void onClick( View view ) {
 
         Intent intent = null;
 
-        if (view == _browserButton) {
+        if ( view == _browserButton ) {
 
             intent = createIntentBrowserOeffnen();
 
-        } else if (view == _geoKoordinateButton) {
+        } else if ( view == _geoKoordinateButton ) {
 
             intent = createIntentGeoKoordinate();
 
-        } else if (view == _appStoreButton) {
+        } else if ( view == _appStoreButton ) {
 
             intent = createIntentAppstoreEintrag();
 
-        } else if (view == _emailButton) {
+        } else if ( view == _emailButton ) {
 
             intent = createIntentEMailVerfassen();
 
-        } else if ( view == _telefonButton) {
+        } else if ( view == _telefonButton ) {
 
             intent = createIntentTelefonanruf();
 
-        } else if ( view == _fotoButton) {
+        } else if ( view == _fotoButton ) {
 
-            intent = new Intent(this, FotoActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, FotoActivity.class );
+            startActivity( intent );
             return;
 
         } else {
 
-            Helferlein.zeigeToast(this,
-                    "INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst.");
-            Log.e(Helferlein.TAG4LOGGING,
+            Helferlein.zeigeToast( this,
+                    "INTERNER FEHLER: Event-Handler von unerwartetem UI-Element ausgelöst." );
+            Log.e( Helferlein.TAG4LOGGING,
                     "Unerwartetes View-Objekt in Event-Handler für Buttons: " + view );
 
             return; // Abbruch
@@ -141,15 +141,15 @@ public class MainActivity extends Activity
         // Android-Gerät mindestens eine App gibt, die den Intent unterstützt;
         // ist dies nicht der Fall und das Intent-Objekt wird trotzdem abgeschickt,
         // dann stürzt die App ab.
-        if ( Helferlein.wirdIntentUnterstuetzt(this, intent) ) {
+        if ( Helferlein.wirdIntentUnterstuetzt(this, intent ) ) {
 
-            startActivity(intent);
+            startActivity( intent );
         }
         else {
 
-            Helferlein.zeigeToast(this,
+            Helferlein.zeigeToast( this,
                     "Dieser Intent wird auf Ihrem Gerät leider nicht unterstützt." );
-            view.setEnabled(false); // Button deaktivieren
+            view.setEnabled( false ); // Button deaktivieren
         }
     }
 
@@ -163,7 +163,7 @@ public class MainActivity extends Activity
      */
     protected Intent createIntentBrowserOeffnen() {
 
-        Uri httpUri = Uri.parse("https://www.heise.de" );
+        Uri httpUri = Uri.parse( "https://www.heise.de" );
 
         Intent intent = new Intent( Intent.ACTION_VIEW );
         intent.setData( httpUri );
@@ -192,7 +192,7 @@ public class MainActivity extends Activity
 
         // Dezimal-Koordinaten für Schloss KA als URI;
         // "Südlich" oder "Westlich" können mit negativen Vorzeichen definiert werden.
-        Uri geoUri = Uri.parse("geo:49.014,8.4043" );
+        Uri geoUri = Uri.parse( "geo:49.014,8.4043" );
 
         Intent intent = new Intent( Intent.ACTION_VIEW );
         intent.setData( geoUri );
@@ -219,7 +219,8 @@ public class MainActivity extends Activity
      */
     protected Intent createIntentAppstoreEintrag() {
 
-        Uri appStoreUri = Uri.parse("market://details?id=de.spiegel.android.app.spon" );
+        Uri appStoreUri =
+                Uri.parse( "market://details?id=de.spiegel.android.app.spon" );
 
         Intent intent = new Intent( Intent.ACTION_VIEW );
         intent.setData( appStoreUri );
@@ -240,9 +241,9 @@ public class MainActivity extends Activity
      */
     protected Intent createIntentEMailVerfassen() {
 
-        Uri emailUri = Uri.parse("mailto:" );
+        Uri emailUri = Uri.parse( "mailto:" );
 
-        Intent intent = new Intent (Intent.ACTION_SEND );
+        Intent intent = new Intent( Intent.ACTION_SEND );
         intent.setData( emailUri );
 
         intent.setType( "text/plain" );
@@ -264,7 +265,7 @@ public class MainActivity extends Activity
      */
     protected Intent createIntentTelefonanruf() {
 
-        Uri telefonUri = Uri.parse("tel:0123456789" );
+        Uri telefonUri = Uri.parse( "tel:0123456789" );
 
         Intent intent = new Intent( Intent.ACTION_DIAL );
         intent.setData( telefonUri );
